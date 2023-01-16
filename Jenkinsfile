@@ -37,7 +37,8 @@ pipeline {
                     )
                 }
             }
-            stage('DeployToProd') {
+        }
+        stage('DeployToProduction') {
             when {
                 branch 'master'
             }
@@ -50,7 +51,7 @@ pipeline {
                         continueOnError: false,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'prod',
+                                configName: 'production',
                                 sshCredentials: [
                                     username: "$USERNAME",
                                     encryptedPassphrase: "$USERPASS"
